@@ -1,8 +1,3 @@
-environment {
-    registry = "jaels/"
-    registryCredential = 'dockerhub'
-}
-
 podTemplate(label: 'mypod', containers: [
     containerTemplate(name: 'docker', image: 'docker:stable', command: 'cat', ttyEnabled: true)
   ],
@@ -12,10 +7,10 @@ podTemplate(label: 'mypod', containers: [
   ) {
     node('mypod') {
         checkout scm
-        stage('Check running containers') {
+        stage('build nginx') {
             container('docker') {
-                sh 'ls -l'
-                sh 'docker build -t web_nginx .'
+                sh 'cd nginx'
+                sh 'docker build .'
             }
         }
     }
