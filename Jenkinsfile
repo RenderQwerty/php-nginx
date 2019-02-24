@@ -15,7 +15,8 @@ podTemplate(label: 'mypod', containers: [
         checkout scm
         stage('build nginx') {
             container('docker') {
-                sh 'docker build -t "$registry" nginx'
+                sh 'echo $registry'
+                //sh 'docker build -t "$registry" nginx'
             }
         }
     }
