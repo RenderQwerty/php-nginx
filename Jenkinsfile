@@ -1,3 +1,9 @@
+environment {
+    registry = "jaels/nginx-php"
+    registryCredential = ‘dockerhub’
+    dockerImage = ''
+}
+
 podTemplate(label: 'mypod', containers: [
     containerTemplate(name: 'docker', image: 'docker:stable', command: 'cat', ttyEnabled: true)
   ],
@@ -9,7 +15,7 @@ podTemplate(label: 'mypod', containers: [
         checkout scm
         stage('build nginx') {
             container('docker') {
-                sh 'docker build -t jaels/nginx-php:latest nginx/'
+                sh 'docker build -t "$registry" nginx'
             }
         }
     }
