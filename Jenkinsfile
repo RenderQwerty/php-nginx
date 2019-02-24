@@ -10,7 +10,7 @@ podTemplate(label: 'mypod', containers: [
         stage('build nginx') {
             container('docker') {
                 sh 'ls -l'
-                sh 'docker build jaels/nginx-php:latest -f site/Dockerfile'
+                sh 'docker build -t jaels/nginx-php:latest -f site/Dockerfile'
             }
         }
     }
