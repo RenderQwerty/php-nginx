@@ -9,7 +9,7 @@ podTemplate(label: 'mypod', containers: [
         checkout scm
         stage('build nginx') {
             container('docker') {
-                sh 'cd nginx'
+                sh 'cd nginx && ls -l'
                 sh 'docker build .'
             }
         }
