@@ -10,7 +10,7 @@ podTemplate(label: 'mypod', containers: [
         stage('build nginx') {
             container('docker') {
                 sh 'cd nginx && ls -l'
-                sh 'docker build .'
+                sh 'docker build . -f Dockerfile'
             }
         }
     }
