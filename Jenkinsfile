@@ -9,8 +9,7 @@ podTemplate(label: 'mypod', containers: [
         checkout scm
         stage('build nginx') {
             container('docker') {
-                sh 'ls -l'
-                sh 'docker build -t jaels/nginx-php:latest -f site/Dockerfile'
+                sh 'docker build -t jaels/nginx-php:latest nginx/'
             }
         }
     }
